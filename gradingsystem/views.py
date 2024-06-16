@@ -117,8 +117,8 @@ def store_user(request):
     messages.success(request, 'User successfully saved.')
     return redirect('user')
     
-def show_user(request, user_id):
-    user = User.objects.get(pk=user_id) 
+def show_user(request, student_id):
+    user = User.objects.get(pk=student_id) 
 
     context = {
         'user': user,
@@ -126,8 +126,8 @@ def show_user(request, user_id):
 
     return render(request, 'user/show.html', context)
 
-def delete_user(request, user_id):
-    user = User.objects.get(pk=user_id)
+def delete_user(request, student_id):
+    user = User.objects.get(pk=student_id)
 
     context = {
         'user': user,
@@ -135,15 +135,15 @@ def delete_user(request, user_id):
 
     return render(request, 'user/delete.html', context)
 
-def destroy_user(request, user_id):
-    User.objects.filter(pk=user_id).delete() # DELETE FROM genders WHERE gender_id = gender_id
+def destroy_user(request, student_id):
+    User.objects.filter(pk=student_id).delete() # DELETE FROM genders WHERE gender_id = gender_id
     messages.success(request, 'User Successfully Deleted')
 
     return redirect('user')
 
-def edit_user(request, user_id):
+def edit_user(request, student_id):
     genders = Gender.objects.all()
-    user = User.objects.select_related('gender').get(pk=user_id)
+    user = User.objects.select_related('gender').get(pk=student_id)
 
     context = {
         'genders': genders,
@@ -152,16 +152,20 @@ def edit_user(request, user_id):
 
     return render(request, 'user/edit.html', context)
 
-def update_user(request, user_id):
+def update_user(request, student_id):
     firstName = request.POST.get('first_name')
     middleName = request.POST.get('middle_name')
     lasttName = request.POST.get('last_name')
     age = request.POST.get('age')
-    birthDate = request.POST.get('birth_date')
-    gender = request.POST.get('gender_id')
-    username = request.POST.get('username')
+    genderId = request.POST.get('gender_id')
+    math = request.POST.get('math')
+    science = request.POST.get('science')
+    english = request.POST.get('english')
+    filipino = request.POST.get('filipino')
+    history = request.POST.get('history')
+    homeroom = request.POST.get('homeroom')
 
-    User.objects.filter(pk=user_id).update(first_name=firstName, middle_name=middleName, last_name=lasttName, age=age, birth_date=birthDate, gender_id=gender, username=username) 
+    User.objects.filter(pk=student_id).update(first_name=firstName, middle_name=middleName, last_name=lasttName, age=age, gender_id=genderId, math=math, science=science, english=english, filipino=filipino, history=history, homeroom=homeroom)
     messages.success(request, 'Gender Successfully Saved')
 
 

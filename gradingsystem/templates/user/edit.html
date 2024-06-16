@@ -7,7 +7,7 @@ View Gender
 
 {% block content %}
 <div class="col-md-4 mx-auto mt-3">
-    <form action="/user/update/{{user.user_id}}" method="post">
+    <form action="/user/update/{{user.student_id}}" method="post">
         {% csrf_token %}
         <div class="mb-3">
             <label for="first_name">First Name</label>
@@ -27,7 +27,7 @@ View Gender
         </div>
         <div class="mb-3">
             <label for="birth_date">Birth Date</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{user.birth_date}}"/>
+            <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{user.birth_date}}" readonly//>
         </div>
         <div class="mb-3">
             <label for="gender_id">Gender</label>
@@ -40,11 +40,32 @@ View Gender
             </select>
         </div>
         <div class="mb-3">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" value="{{ user.username}}"/>
+            <label for= "math">Math</label>
+            <input type="text" class="form-control" id="math" name="math" value="{{user.math}}" />
         </div>
-        <button type="submit" class="btn btn-success float-end col-12 col-md-4">Update User</button>
-        <a href="/" class="btn btn-secondary float-end col-12 col-md-3 ">Back</a>
+        <div class="mb-3">
+            <label for= "science">Science</label>
+            <input type="text" class="form-control" id="science" name="science" value="{{user.science}}" />
+        </div>
+        <div class="mb-3">
+            <label for= "english">English</label>
+            <input type="text" class="form-control" id="english" name="english" value="{{user.english}}" />
+        </div>
+        <div class="mb-3">
+            <label for= "filipino">Filipino</label>
+            <input type="text" class="form-control" id="filipino" name="filipino" value="{{user.filipino}}" />
+        </div>
+        <div class="mb-3">
+            <labfilipinoel for= "history">History</labfilipinoel>
+            <input type="text" class="form-control" id="history" name="history" value="{{user.history}}" />
+        </div>
+        <div class="mb-3">
+            <label for= "homeroom">Homeroom</label>
+            <input type="text" class="form-control" id="homeroom" name="homeroom" value="{{user.homeroom}}" />
+        </div>
+        
+        <button type="submit" class="btn btn-success float-end col-12 col-md-4">Update Student</button>
+        <a href="/user" class="btn btn-secondary float-end col-12 col-md-3 ">Back</a>
     </form>
 </div>
 
