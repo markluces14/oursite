@@ -1,0 +1,64 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+List of Student
+{% endblock title %}
+
+{% block content %}
+
+{% include "include/navbar.html" %}
+
+{% include "include/messages.html" %}
+<a href="user/create" class="btn btn-primary float-end mt-1 me-1">Add User</a>
+
+<div class=" mx-auto">
+    <div class="table responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Math</th>
+                    <th>Science</th>
+                    <th>English</th>
+                    <th>Filipino</th>
+                    <th>History</th>
+                    <th>Homeroom</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.student_id }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.middle_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td>{{ user.math }}</td>
+                    <td>{{ user.science }}</td>
+                    <td>{{ user.english }}</td>
+                    <td>{{ user.filipino }}</td>
+                    <td>{{ user.history }}</td>
+                    <td>{{ user.homeroom }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="/user/show/{{user.student_id}}" class="btn btn-primary">View</a>
+                            <a href="/user/edit/{{user.student_id}}" class="btn btn-success">Edit</a>
+                            <a href="/user/delete/{{user.student_id}}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}
+
