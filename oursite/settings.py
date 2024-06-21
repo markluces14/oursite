@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'gradingsystem_db',
         'USER': 'root',
         'PASSWORD': '',
-        'PORT': '3308',
+        'PORT': '3306',
         'HOST': 'localhost',
 
     }
